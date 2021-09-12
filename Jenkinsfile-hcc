@@ -1,0 +1,324 @@
+void checkNewFiles() {
+    String rawUrl = 'raw/' + env.JOB_NAME
+    node('exts-utils-slave') {
+        checkout scm
+        withEnv(["RAW_URL=${rawUrl}"]){
+            withCredentials([
+                usernamePassword(credentialsId: 'topic-manager-dev', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
+            ]) {
+                sh '''
+                # clone in utilities
+                set -e
+
+                # do real work
+                ADDED_FILES=$(git diff --diff-filter=RA --name-only HEAD^ HEAD | xargs | grep -E '.csv' || true)
+                if [ -z $ADDED_FILES ]; then
+                    echo "No CSV files added"
+                else
+                    for FILE in $ADDED_FILES; do
+                        FULL_FILE=https://github.optum.com/$RAW_URL/$FILE
+                        TEAM=$(echo $FILE | rev | cut -d"/" -f2 | rev)
+                        ENDPOINT=$(echo $FILE | cut -d"/" -f3)
+                        case $TEAM in
+                        prod-kafka-eligibility-ctc)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org DE --cluster ctc --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            # Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-eligibility-elr)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org DE --cluster elr --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            # Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-epim-ctc)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster epim-prod-ctc --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-epim-elr)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster epim-prod-elr --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-pdp-ctc)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster pdp-prod-ctc --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-pdp-elr)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster pdp-prod-elr --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        stage-kafka-pdp-ctc)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster pdp-stage --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            ;;
+                        stage-kafka-voyager-elr)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster voyager-stage --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            ;;
+                        prod-kafka-rally-aws)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster rlh-prod --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        dev-kafka-rally-aws)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster rlh-dev --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE dev
+                            ;;
+                        lab-kafka-rally-azure-east)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster rlh-lab-azure --user $USERNAME:$PASSWORD --prefix-files $FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE dev
+                            ;;
+                        prod-kafka-mnr-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster mnr-prod --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-mnr-02-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster mnr-02-prod --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-shared-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster azure-prod-shared --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            ;;
+                        prod-kafka-ebaasenc-mnr-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster ebaasenc-mnr --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-claims360-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster claims360-prod-azure --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-hcp-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster hcp-prod-azure --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        dev-kafka-hemi-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster hemi-dev --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE dev
+                            ;;
+                        streamit-ingestion-store-dev-elr)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org kaas --cluster streamit-ingestion-store-dev-elr --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE dev
+                            ;;
+                        streamit-ingestion-store-dev-ctc)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org kaas --cluster streamit-ingestion-store-dev-ctc --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                           #  Update compatibility
+                            python compatibility.py $FILE dev
+                            ;;
+                        streamit-ingestion-store-prod-ctc)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org kaas-prod --cluster streamit-ingestion-store-prod-ctc --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        streamit-ingestion-store-prod-elr)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org kaas-prod --cluster streamit-ingestion-store-prod-elr --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-rxclaims-ctc)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org kaas-prod --cluster rxclaims-prod-ctc --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        prod-kafka-rxclaims-elr)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org kaas-prod --cluster rxclaims-prod-elr --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            #  Update compatibility
+                            python compatibility.py $FILE prod
+                            ;;
+                        lab-kafka-hemi-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster hemi-lab --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            ;;
+                        lab-kafka-ebaasenc-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster ebaasenc-lab --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            ;;
+                        lab-kafka-hcpdecrypt-azure)
+                            python ./script/topic-manager.py team -e add --team $TEAM --org pep --cluster ebaas-lab --user $USERNAME:$PASSWORD --prefix-files none=$FULL_FILE
+                            sleep 5
+                            curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                            ;;
+                        *)
+                            echo "Did not find match for ${TEAM}"
+                        esac
+                    done
+                fi
+                '''
+            }
+        }
+    }
+}
+
+void newTopicsAndAcls() {
+    String rawUrl = 'raw/' + env.JOB_NAME
+    node('exts-utils-slave') {
+        checkout scm
+        withEnv(["RAW_URL=${rawUrl}"]){
+            withCredentials([
+                file(credentialsId: 'AWS_769738661673_terraform', variable: 'AWS_CREDS'),
+                file(credentialsId: 'AWS_769738661673_config', variable: 'AWS_CONFIG')
+            ]) {
+            sh '''
+            success_upper=300
+            success_lower=200
+            # create .aws directory structure
+            mkdir -p ~/.aws
+            mv $AWS_CREDS ~/.aws/credentials
+            mv $AWS_CONFIG ~/.aws/config
+
+            # clone in utilities
+            set -e
+
+            # do real work
+            FILES=$(git diff --name-only HEAD^ HEAD | xargs | grep -E '.csv' || true)
+            if [ -z $FILES ]; then
+                echo "No CSV modifications"
+            else
+                for FILE in $FILES; do
+                    TEAM=$(echo $FILE | rev | cut -d"/" -f2 | rev)
+                    ENDPOINT=$(echo $FILE | cut -d"/" -f3)
+                    # curl -i -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}"
+                    status_code=$(curl -I -X POST "http://kafka-manager.ocp-ctc-core-nonprod.optum.com/${TEAM}/topics/${ENDPOINT}" | head -n 1 | cut -d$' ' -f2)
+                    if [ $status_code -ge $success_lower ] && [ $status_code -lt $success_upper ];then
+                        :
+                    else
+                        echo "[Error]: Topic Manager Api hit failure, Status code $status_code !"
+                        exit 1
+                    fi
+                    bash ./script/parse_csv.sh $FILE $TEAM || true
+                    b=0
+                    topic_dev=$(echo "$TEAM" | grep -ino "dev-" | wc -l )
+                    topic_prod=$(echo "$TEAM" | grep -ino "prod-" | wc -l )
+                    if [ $topic_dev -ne $b ]
+                    then
+                     # Update compatibility
+                     python compatibility.py $FILE dev
+                    elif [ $topic_prod -ne $b ]
+                    then
+                     # Update compatibility
+                     python compatibility.py $FILE prod
+                    else
+                     echo ""
+                    fi
+                    
+                done
+            fi
+            '''
+            }
+        }
+    }
+}
+void lint() {
+    String changeId = env.CHANGE_ID
+    withEnv([
+        "CHANGE_ID=${changeId}"
+        ]){
+        withCredentials([
+            string(credentialsId: 'exts-ci-lab-token', variable: 'GITHUB_API_TOKEN')
+        ]) {
+        sh '''
+            flag=0
+            CSV_FILES=$(git diff --name-only HEAD^ HEAD | xargs | grep -E '.csv' | wc -l || true)
+            if [ $CSV_FILES -ne $flag ]; then
+                echo "#################################################"
+                echo "#     Calling Linter to Validate the CSV"        #
+                echo "#################################################"
+                python ./script/lint.py lint --pr $CHANGE_ID --base-dir .
+            else
+                echo "No relevant file was modified, Not calling Linter!"
+            fi
+            '''
+        }
+    }
+}
+
+pipeline {
+    agent {
+        label 'exts-utils-slave'
+    }
+    stages {
+        stage('Check Pull-Request Status') {
+            when {
+                changeRequest target: 'master'
+            }
+            steps {
+                lint()
+            }
+        }
+        stage('Check for new CSV Files') {
+            when {
+                branch 'master'
+            }
+            steps {
+                checkNewFiles()
+            }
+        }
+        stage('Create new Topics and ACLs') {
+            when {
+                branch 'master'
+            }
+            steps {
+                newTopicsAndAcls()
+            }
+        }
+    }
+}

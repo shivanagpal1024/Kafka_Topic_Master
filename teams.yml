@@ -1,0 +1,400 @@
+---
+teams:
+  d2streaming:
+    teamName: d2streaming
+    serverCluster: df
+    organization: ",OU=Data Externalization,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      ATTPROD.BOS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODBOS.csv
+      ATTPROD.CDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODCDB.csv
+      ATTPROD.CSF: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODCSF.csv
+      ATTPROD.ETS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODETS.csv
+      ATTPROD.GPS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODGPS.csv
+      ATTPROD.HSR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODHSR.csv
+      ATTPROD.NDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODNDB.csv
+      ATTPROD.ORS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODORS.csv
+      ATTPROD.RSO: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODRSO.csv
+      ATTPROD.RXS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODRXS.csv
+      ATTPROD.SCM: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODSCM.csv
+      ATTPROD.GPN: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODGPN.csv
+      ATTPROD.UMR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATPRODUMR.csv
+      ATTPROD.MAP: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODMAP.csv
+      ATTPROD.ODR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/ATTPRODODR.csv
+      CDCPROD.RX1: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/CDCPRODRX1.csv
+      CDCPROD.RX2: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/CDCPRODRX2.csv
+      CDCPROD: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/CDCPROD.csv
+      DL.PROD.BOS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODBOS.csv
+      DL.PROD.CDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODCDB.csv
+      DL.PROD.CSF: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODCSF.csv
+      DL.PROD.ETS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODETS.csv
+      DL.PROD.GPS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODGPS.csv
+      DL.PROD.GPN: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODGPN.csv
+      DL.PROD.HSR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODHSR.csv
+      DL.PROD.NDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODNDB.csv
+      DL.PROD.ORS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODORS.csv
+      DL.PROD.RSO: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODRSO.csv
+      DL.PROD.RX1: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODRX1.csv
+      DL.PROD.RX2: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODRX2.csv
+      DL.PROD.PAS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODPAS.csv
+      DL.PROD.LAB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODLAB.csv
+      DL.PROD.STA: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODSTA.csv
+      DL.PROD.RXS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODRXS.csv
+      DL.PROD.MAP: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODMAP.csv
+      DL.PROD.ODR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLPRODODR.csv
+      PROD.UMR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/PRODUMR.csv
+      PROD: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/PROD.csv
+      PROD.SYSTEM: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/SYSTEMTOPIC.csv
+      DL.PROD.SYSTEM: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/DLSYSTEMTOPIC.csv
+      PARALLEL.PROD.SYSTEM: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/PARALLELSYSTEMTOPIC.csv
+      PROD.OPTUM: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/PRODOPTUMSTREAMING.csv
+      Consolidated: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/prod-kafka-cluster/PROMETHEUS_MISC.csv
+      
+  dev-kafka-eligibility:
+    teamName: dev-kafka-eligibility
+    serverCluster: kaas
+    organization: ",OU=Data Externalization,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      ATT: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/dev-kafka-eligibility/ATT.csv
+      DL: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/dev-kafka-eligibility/DL.csv
+      CDCDE: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/dev-kafka-eligibility/cdcde.csv
+      CDCTEST: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/dev-kafka-eligibility/CDCTEST.csv
+      CIS: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/dev-kafka-eligibility/CIS.csv
+      DE_STREAMS: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/dev-kafka-eligibility/de_streams.csv
+      gduraika: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/dev-kafka-eligibility/gduraika.csv
+      SDEV: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/dev-kafka-eligibility/SDEV.csv
+      DL.TEST.CSF: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLTESTCSF.csv
+      SDEV.GPS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/SDEVGPS.csv
+      SDEV.SYSTEM: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/SYSTEMTOPIC.csv
+      DS.NONPROD: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DSSYSTEMTOPIC.csv
+      LOGSTAG.NI1: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/LOGSTAGNI1.csv
+      ATTSTAG.ETS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTSTAGETS.csv
+      ATTSTAG.GPN: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTSTAGGPN.csv
+      ATTSTAG.GPS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTSTAGGPS.csv
+      ATTSTAG.MAP: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTSTAGMAP.csv
+      ATTSTAG.IER: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTSTAGIER.csv
+      ATTTEST.CDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTTESTCDB.csv
+      ATTTEST.CSF: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTTESTCSF.csv
+      ATTTEST.HSR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTTESTHSR.csv
+      ATTTEST.NDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTTESTNDB.csv
+      ATTTEST.ODR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/ATTTESTODR.csv
+      CDCTEST.RX1: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/CDCTESTRX1.csv
+      CDCTEST.RX2: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/CDCTESTRX2.csv
+      DL.STAG.NI1: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLSTAGNI1.csv
+      DL.STAG.GPN: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLSTAGGPN.csv
+      DL.STAG.GPS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLSTAGGPS.csv
+      DL.STAG.ETS: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLSTAGETS.csv
+      DL.STAG.IER: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLSTAGIER.csv
+      DL.TEST.CDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLTESTCDB.csv
+      DL.TEST.HSR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLTESTHSR.csv
+      DL.TEST.NDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLTESTNDB.csv
+      DL.TEST.RX1: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLTESTRX1.csv
+      DL.TEST.RX2: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLTESTRX2.csv
+      DL.TEST.ODR: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLTESTODR.csv
+      DL.STAG.MAP: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DLSTAGMAP.csv
+      DF3DEMO.CDB: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/DF3DEMOCDB.csv
+      none: https://github.optum.com/raw/Optum-DataFabric3/df3-kafka-topics/master/sdev-kafka-cluster/sdev-kafka-connect-hdfs.csv
+
+  prod-kafka-eligibility-ctc:
+    teamName: prod-kafka-eligibility-ctc
+    serverCluster: ctc
+    organization: ",OU=Data Externalization,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      DE_STREAMS: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/prod-kafka-eligibility-ctc/de_streams.csv
+      CDCPROD: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/prod-kafka-eligibility-ctc/CDCPROD.csv
+
+
+  prod-kafka-eligibility-elr:
+    teamName: prod-kafka-eligibility-elr
+    serverCluster: elr
+    organization: ",OU=Data Externalization,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      DE_STREAMS: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/prod-kafka-eligibility-elr/de_streams.csv
+      CDCPROD: https://github.optum.com/raw/DataExternalization/kafka-topics/master/topics/prod-kafka-eligibility-elr/CDCPROD.csv
+      IMDM: https://github.optum.com/raw/DataExternalization/kafka-topics/blob/master/topics/prod-kafka-eligibility-elr/imdm.csv
+
+  cirrus:
+    teamName: cirrus
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.cirrus: https://github.optum.com/raw/Kafka/kaas-alpha/master/cirrus/cirrus.csv
+
+  csfacets:
+    teamName: csfacets
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.csfacets: https://github.optum.com/raw/Kafka/kaas-alpha/master/csfacets/csfacets.csv
+
+  datacore:
+    teamName: datacore
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.datacore: https://github.optum.com/raw/Kafka/kaas-alpha/master/datacore/datacore.csv
+
+  dev-cdb-elig:
+    teamName: dev-cdb-elig
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.dev-cdb-elig: https://github.optum.com/raw/Kafka/kaas-alpha/master/dev-cdb-elig/dev-cdb-elig.csv
+
+  github:
+    teamName: github
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.github: https://github.optum.com/raw/Kafka/kaas-alpha/master/github/github.csv
+
+  n4me:
+    teamName: n4me
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.n4me: https://github.optum.com/raw/Kafka/kaas-alpha/master/n4me/n4me.csv
+
+  pes:
+    teamName: pes
+    serverCluster: kaas
+    organization: ",OU=Data Externalization,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.pes: https://github.optum.com/raw/Kafka/kaas-alpha/master/pes/pes.csv
+
+  pixel:
+    teamName: pixel
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.pixel: https://github.optum.com/raw/Kafka/kaas-alpha/master/pixel/pixel.csv
+
+  polaris:
+    teamName: polaris
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.polaris: https://github.optum.com/raw/Kafka/kaas-alpha/master/polaris/polaris.csv
+
+  stargate:
+    teamName: stargate
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.stargate: https://github.optum.com/raw/Kafka/kaas-alpha/master/stargate/stargate.csv
+
+  voyager:
+    teamName: voyager
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.voyager: https://github.optum.com/raw/Kafka/kaas-alpha/master/voyager/voyager.csv
+
+  team_home:
+    teamName: team_home
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.team_home: https://github.optum.com/raw/Kafka/kaas-alpha/master/team_home/team_home.csv
+
+  epmp:
+    teamName: epmp
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.epmp: https://github.optum.com/raw/Kafka/kaas-alpha/master/epmp/epmp.csv
+
+  optum-ivr:
+    teamName: optum-ivr
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.optum-ivr: https://github.optum.com/raw/Kafka/kaas-alpha/master/optum-ivr/optum-ivr.csv
+
+  prm:
+    teamName: prm
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.prm: https://github.optum.com/raw/Kafka/kaas-alpha/master/prm/prm.csv
+
+  springj:
+    teamName: springj
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.springj: https://github.optum.com/raw/Kafka/kaas-alpha/master/springj/springj.csv
+
+  EEMSPRIME:
+    teamName: EEMSPRIME
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.EEMS-PRIME: https://github.optum.com/raw/Kafka/kaas-alpha/master/EEMSPRIME/EEMSPRIME.csv
+
+  cdb-crt:
+    teamName: cdb-crt
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.cdb-crt: https://github.optum.com/raw/Kafka/kaas-alpha/master/cdb-crt/cdb-crt.csv
+
+  test-topics:
+    teamName: test-topics
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.test-topics: https://github.optum.com/raw/Kafka/kaas-alpha/master/test-topics/test-topics.csv
+
+  ClinicalProfile:
+    teamName: ClinicalProfile
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.ClinicalProfile: https://github.optum.com/raw/Kafka/kaas-alpha/master/ClinicalProfile/ClinicalProfile.csv
+
+  cdb-bds:
+    teamName: cdb-bds
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.cdb-bds: https://github.optum.com/raw/Kafka/kaas-alpha/master/cdb-bds/cdb-bds.csv
+
+  optumcare_cdc:
+    teamName: optumcare_cdc
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.optumcare_cdc: https://github.optum.com/raw/Kafka/kaas-alpha/master/optumcare_cdc/optumcare_cdc.csv
+
+  pdp:
+    teamName: pdp
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.pdp: https://github.optum.com/raw/Kafka/kaas-alpha/master/pdp/pdp.csv
+
+  oil:
+    teamName: oil
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.oil: https://github.optum.com/raw/Kafka/kaas-alpha/master/oil/oil.csv
+
+  chbe:
+    teamName: chbe
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.chbe: https://github.optum.com/raw/Kafka/kaas-alpha/master/chbe/chbe.csv
+
+  imdm:
+    teamName: imdm
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.imdm: https://github.optum.com/raw/Kafka/kaas-alpha/master/imdm/imdm.csv
+
+  c360:
+    teamName: c360
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.c360: https://github.optum.com/raw/Kafka/kaas-alpha/master/c360/c360.csv
+
+  inquisition:
+    teamName: inquisition
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.inquisition: https://github.optum.com/raw/Kafka/kaas-alpha/master/inquisition/inquisition.csv
+
+  optum-c360:
+    teamName: optum-c360
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.optum-c360: https://github.optum.com/raw/Kafka/kaas-alpha/master/optum-c360/optum-c360.csv
+
+  pi-oprs:
+    teamName: pi-oprs
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.pi-oprs: https://github.optum.com/raw/Kafka/kaas-alpha/master/pi-oprs/pi-oprs.csv
+
+  devops-metrics:
+    teamName: devops-metrics
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.devops-metrics: https://github.optum.com/raw/Kafka/kaas-alpha/master/devops-metrics/devops-metrics.csv
+
+  kancare:
+    teamName: kancare
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.kancare: https://github.optum.com/raw/Kafka/kaas-alpha/master/kancare/kancare.csv
+
+  CSG_Tenant:
+    teamName: CSG_Tenant
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.CSG_Tenant: https://github.optum.com/raw/Kafka/kaas-alpha/master/CSG_Tenant/CSG_Tenant.csv
+
+  ClinicalDomain:
+    teamName: ClinicalDomain
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.ClinicalDomain: https://github.optum.com/raw/Kafka/kaas-alpha/master/ClinicalDomain/ClinicalDomain.csv
+
+  datalake:
+    teamName: datalake
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.datalake: https://github.optum.com/raw/Kafka/kaas-alpha/master/datalake/datalake.csv
+
+  clinical-reporting:
+    teamName: clinical-reporting
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.clinical-reporting: https://github.optum.com/raw/Kafka/kaas-alpha/master/clinical-reporting/clinical-reporting.csv
+
+  opi-polaris:
+    teamName: opi-polaris
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.opi-polaris: https://github.optum.com/raw/Kafka/kaas-alpha/master/opi-polaris/opi-polaris.csv
+
+  edz-datalake:
+    teamName: edz-datalake
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.edz-datalake: https://github.optum.com/raw/Kafka/kaas-alpha/master/edz-datalake/edz-datalake.csv
+
+  kanc:
+    teamName: kanc
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.kanc: https://github.optum.com/raw/Kafka/kaas-alpha/master/kanc/kanc.csv
+
+  rxesb:
+    teamName: rxesb
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.rxesb: https://github.optum.com/raw/Kafka/kaas-alpha/master/rxesb/rxesb.csv
+
+  eaip-providertest:
+    teamName: eaip-providertest
+    serverCluster: kaas
+    organization: ",OU=KaaS,O=UnitedHealth Group Inc.,L=Plymouth,ST=Minnesota,C=US"
+    prefixFiles:
+      kaas.eaip-providertest: https://github.optum.com/raw/Kafka/kaas-alpha/master/eaip-providertest/eaip-providertest.csv
